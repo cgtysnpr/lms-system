@@ -8,7 +8,7 @@ const Header = () => {
         <div className="container">
           <div className="header_block d-new-a">
             <div className="logo">
-              <a href="#">
+              <a href="">
                 <img src="images/logo.png" alt="" />
               </a>
             </div>
