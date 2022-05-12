@@ -1,7 +1,6 @@
 import useAuth from "../../hooks/useAuth";
 const ThirdHeader = ({ user }) => {
   const { logout } = useAuth();
-  console.log(user);
   return (
     <>
       <div>
@@ -13,8 +12,8 @@ const ThirdHeader = ({ user }) => {
           <div className="container">
             <div className="header_block d-new-a">
               <div className="logo">
-                <a href="#">
-                  <img src="images/logo.png" alt="" />
+                <a href="/">
+                  <img src="/images/logo.png" alt="" />
                 </a>
               </div>
               <div className="userMenu">
@@ -24,7 +23,11 @@ const ThirdHeader = ({ user }) => {
                   </span>
                   <div className="user_info_img">
                     <img
-                      src={user.profilePicture || "images/preson.jpg"}
+                      src={
+                        user.profilePicture
+                          ? process.env.REACT_APP_API_ENDPOINT
+                          : "/images/preson.jpg"
+                      }
                       alt=""
                     />
                   </div>
@@ -35,7 +38,7 @@ const ThirdHeader = ({ user }) => {
                       <a href="#">Edit profile</a>
                     </li>
                     <li>
-                      <a href="#">Manage Supscription</a>
+                      <a href="/dashboard">Manage Supscription</a>
                     </li>
                     <li>
                       <a href="#">Contact</a>

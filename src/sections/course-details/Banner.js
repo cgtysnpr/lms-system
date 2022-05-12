@@ -1,8 +1,8 @@
-const Banner = () => {
+const Banner = ({ image }) => {
   return (
     <section
       className="banner_inner"
-      style={{ background: "url(images/course_banner.jpg)" }}
+      style={{ background: `url(/images/course_banner.jpg)` }}
     >
       <div className="container">
         <div className="banner_inner_text">

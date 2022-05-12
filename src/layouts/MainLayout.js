@@ -16,9 +16,9 @@ const Layout = ({ children }) => {
   }
   return (
     <>
+      <Outlet />
       {user ? <ThirdHeader user={user} /> : <Header />}
 
-      <Outlet />
       <main>{children}</main>
       <Footer />
     </>

@@ -1,6 +1,7 @@
 import useAuth from "../hooks/useAuth";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import Page from "react-page-loading";
 export default function UserLogin() {
   const navigate = useNavigate();
   const { login, user } = useAuth();
@@ -14,6 +15,16 @@ export default function UserLogin() {
       toast.success("Logged In!");
     }
   };
+  if (typeof user === "undefined") {
+    return (
+      <div>
+        <Page loader={"bar"} color={"#A9A9A9"} size={10}></Page>
+      </div>
+    );
+  }
+  if (user) {
+    navigate("/");
+  }
   return (
     <>
       <form onSubmit={handleLogin}>

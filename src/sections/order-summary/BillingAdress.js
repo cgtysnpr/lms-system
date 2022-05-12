@@ -12,7 +12,7 @@ const BillingAddress = () => {
           <option value>Country</option>
         </select>
         <img
-          src="./images/icon-arrow-down.png"
+          src="/images/icon-arrow-down.png"
           width="22px"
           height="12px"
           className="float-right mt-3 ml-n5"

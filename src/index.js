@@ -15,7 +15,6 @@ import Contact from "./pages/contact";
 import AuthorDetails from "./pages/author-details";
 import MainLayout from "./layouts/MainLayout";
 import SecondLayout from "./layouts/SecondLayout";
-import ThirdLayout from "./layouts/ThirdLayout";
 import { ToastContainer } from "react-toastify";
 import { Helmet } from "react-helmet";
 import "react-toastify/dist/ReactToastify.css";
@@ -26,44 +25,49 @@ import "./styles/css/fonts/font.css";
 export default function App() {
   return (
     <>
-      <AuthProvider>
-        <ToastContainer theme="colored" />
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<MainLayout />}>
-              <Route index element={<Home />} />
-              <Route path="course-details" element={<CourseDetails />} />
-              <Route path="order-summary" element={<OrderSummary />} />
-              <Route path="edit-profile" element={<EditProfile />} />
-              <Route path="dashboard" element={<Dashboard />} />
-              <Route path="course-curriculum" element={<CourseCurriculum />} />
-              <Route path="contact" element={<Contact />} />
-              <Route path="author-details" element={<AuthorDetails />} />
-            </Route>
-            <Route path="/" element={<SecondLayout />}>
-              <Route path="login" element={<Login />} />
-              <Route path="signup" element={<SignUp />} />
-              <Route
-                path="forgat-password-first"
-                element={<ForgatPasswordFirst />}
-              />
-              <Route
-                path="forgat-password-second"
-                element={<ForgatPasswordSecond />}
-              />
-              <Route
-                path="forgat-password-third"
-                element={<ForgatPasswordThird />}
-              />
-            </Route>
-          </Routes>
+      <ToastContainer theme="colored" />
+      <BrowserRouter>
+        <>
+          <AuthProvider>
+            <Routes>
+              <Route path="/" element={<MainLayout />}>
+                <Route index element={<Home />} />
+                <Route path="course-details/:id" element={<CourseDetails />} />
+                <Route path="order-summary/:id" element={<OrderSummary />} />
+                <Route path="edit-profile" element={<EditProfile />} />
+                <Route path="dashboard" element={<Dashboard />} />
+                <Route
+                  path="course-curriculum/:id"
+                  element={<CourseCurriculum />}
+                />
+                <Route path="contact" element={<Contact />} />
+                <Route path="author-details/:id" element={<AuthorDetails />} />
+              </Route>
+              <Route path="/" element={<SecondLayout />}>
+                <Route path="login" element={<Login />} />
+                <Route path="signup" element={<SignUp />} />
+                <Route
+                  path="forgat-password-first"
+                  element={<ForgatPasswordFirst />}
+                />
+                <Route
+                  path="forgat-password-second"
+                  element={<ForgatPasswordSecond />}
+                />
+                <Route
+                  path="forgat-password-third"
+                  element={<ForgatPasswordThird />}
+                />
+              </Route>
+            </Routes>
+          </AuthProvider>
           <Helmet>
             <script src="/js/jquery.js" type="text/javascript"></script>
             <script src="/js/bootstrap.js" type="text/javascript"></script>
             <script src="/js/custom.js" type="text/javascript"></script>
           </Helmet>
-        </BrowserRouter>
-      </AuthProvider>
+        </>
+      </BrowserRouter>
     </>
   );
 }

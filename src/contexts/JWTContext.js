@@ -127,6 +127,7 @@ function AuthProvider({ children }) {
   const logout = async () => {
     setSession(null);
     dispatch({ type: "LOGOUT" });
+    window.location.replace("/");
   };
 
   return (

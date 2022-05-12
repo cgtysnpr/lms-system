@@ -1,9 +1,12 @@
 const Card = ({ data }) => {
   return (
     <div className="col-md-6 col-lg-4 d-flex plr-25">
-      <a href="#" className="courses_item">
+      <a href={`/course-details/${data.slug}`} className="courses_item">
         <div className="courses_img">
-          <img src={data.image} alt="" />
+          <img
+            src={process.env.REACT_APP_API_ENDPOINT + data.coverImage}
+            alt=""
+          />
         </div>
         <div className="courses_info">
           <div className="courses_info_top">
@@ -13,12 +16,22 @@ const Card = ({ data }) => {
           <div className="courses_author">
             <div className="courses_author_info">
               <div className="courses_author_img">
-                <img src={data.userImage} alt="" />
+                <img
+                  src={
+                    data.author.profilePicture
+                      ? process.env.REACT_APP_API_ENDPOINT +
+                        data.author.profilePicture
+                      : "images/preson.jpg"
+                  }
+                  alt=""
+                />
               </div>
-              <span>{data.userName}</span>
+              <span>
+                {data.author.firstname} {data.author.lastname}
+              </span>
             </div>
             <div className="courses_price">
-              <h5>{data.amount}</h5>
+              <h5>{"$ " + data.coursePricePlan.price}</h5>
             </div>
           </div>
         </div>

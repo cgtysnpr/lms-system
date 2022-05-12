@@ -8,7 +8,7 @@ const PaymentInformation = () => {
       <div className="form-group form-control textfield ">
         <label className="order_summary_container">
           {" "}
-          <img src="./images/paypal.png" width="100px" alt="" />
+          <img src="/images/paypal.png" width="100px" alt="" />
           <input type="radio" defaultChecked="checked" name="radio" />
           <span className="checkmark" />
         </label>

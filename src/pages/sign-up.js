@@ -1,9 +1,10 @@
 import useAuth from "../hooks/useAuth";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import Page from "react-page-loading";
 const SignUp = () => {
   const navigate = useNavigate();
-  const { register } = useAuth();
+  const { register, user } = useAuth();
   const handleRegister = async (event) => {
     event.preventDefault();
     const form = new FormData(event.target);
@@ -14,6 +15,16 @@ const SignUp = () => {
       toast.success("Successfull!");
     }
   };
+  if (typeof user === "undefined") {
+    return (
+      <div>
+        <Page loader={"bar"} color={"#A9A9A9"} size={10}></Page>
+      </div>
+    );
+  }
+  if (user) {
+    navigate("/");
+  }
   return (
     <section className="background_color_grey pt-4">
       <form onSubmit={handleRegister}>

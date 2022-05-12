@@ -1,22 +1,25 @@
 import CurriculumDetailCourse from "../../components/curriculum/CurriculumDetailCourse";
-const detailData = [
-  {
-    title: "SQL Server Database Development in Amharic",
-  },
-  {
-    title: "SQL Server Database Development in Amharic",
-  },
-  {
-    title: "SQL Server Database Development in Amharic",
-  },
-  {
-    title: "SQL Server Database Development in Amharic",
-  },
-  {
-    title: "SQL Server Database Development in Amharic",
-  },
-];
-const CurriculumDetails = () => {
+import { useEffect, useState } from "react";
+import curriculumService from "../../services/curriculum-service";
+const CurriculumDetails = ({ id, isEnrolled, slug }) => {
+  const [sectionData, setSectionData] = useState([]);
+  const [lectureData, setLectureData] = useState([]);
+  useEffect(async () => {
+    const response = await curriculumService.section(id);
+    if (response.result) {
+      setSectionData(response.result);
+
+      response.result.map((data) => {
+        lectureFunction(data.id);
+      });
+    }
+  }, []);
+  const lectureFunction = async (id) => {
+    const dataResponse = await curriculumService.lecture(id);
+    if (dataResponse.result) {
+      setLectureData([...lectureData, dataResponse.result]);
+    }
+  };
   return (
     <div className="col-xl-8  px-xl-2 px-md-5 pt-4 background_color_grey">
       <div className="row pt-xl-5 ">
@@ -26,29 +29,23 @@ const CurriculumDetails = () => {
           </div>
           <div className="curriculum_list">
             <ul className="mb-5">
-              <h4 className="mt-5 pb-3 text-center text-md-left">
-                Welcome to the corse!
-              </h4>
-              {detailData.map((data, i) => (
-                <CurriculumDetailCourse key={`corse${i}`} data={data} />
-              ))}
-              <h4 className="mt-5 pb-3  text-center text-md-left">
-                About online courses
-              </h4>
-              {detailData.map((data, i) => (
-                <CurriculumDetailCourse key={`online${i}`} data={data} />
-              ))}
-              <h4 className="mt-5 pb-3 text-center text-md-left">
-                Find your best course idea
-              </h4>
-              {detailData.map((data, i) => (
-                <CurriculumDetailCourse key={`best${i}`} data={data} />
-              ))}
-              <h4 className="mt-5 pb-3 text-center text-md-left">
-                Validate your course topic
-              </h4>
-              {detailData.map((data, i) => (
-                <CurriculumDetailCourse key={`topic${i}`} data={data} />
+              {sectionData?.map((data, i) => (
+                <>
+                  <h4
+                    key={`sec${i}`}
+                    className="mt-5 pb-3 text-center text-md-left"
+                  >
+                    {data.title}
+                  </h4>
+                  {lectureData[i]?.map((lecture, j) => (
+                    <CurriculumDetailCourse
+                      key={`lecture${j}`}
+                      isEnrolled={isEnrolled}
+                      data={lecture}
+                      slug={slug}
+                    />
+                  ))}
+                </>
               ))}
             </ul>
           </div>
