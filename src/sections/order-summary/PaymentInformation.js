@@ -1,3 +1,6 @@
+import React from "react";
+import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
+
 const PaymentInformation = () => {
   return (
     <div className="mb-3">
@@ -41,6 +44,12 @@ const PaymentInformation = () => {
             <input className="form-control textfield" placeholder="CVV" />
           </div>
         </div>
+        <PayPalScriptProvider
+          options={{ "client-id": process.env.PAYMENT_CLIENT_ID }}
+        >
+          <PayPalButtons style={{ layout: "horizontal" }} />
+        </PayPalScriptProvider>
+        <button>Buy</button>
       </div>
     </div>
   );

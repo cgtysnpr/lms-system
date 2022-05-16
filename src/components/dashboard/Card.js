@@ -15,7 +15,10 @@ const Card = ({ data }) => {
         <div className="dasboard_info">
           <div className="dasboard_top">
             <h3>{data.course.title}</h3>
-            <h6>{data.course.courseCompletePercentage}</h6>
+            <h6>
+              {data.course.courseCompletePercentage}
+              {"% Complete"}
+            </h6>
           </div>
           <div className="courses_author">
             <div className="courses_author_info">

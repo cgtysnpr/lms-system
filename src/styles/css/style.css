@@ -2162,8 +2162,14 @@ h5.price{
         background:#0099cc34;
         height: 1.5rem;
         width: 100%;
+        position:relative;
     }
-    
+    .percant{
+        position:absolute;
+        border-radius: 10px;
+        background:#0099cc;
+        height: 1.5rem;
+    }    
 /*----------- curriculum_curriculum Page Css End----------*/
 
 /* <------------Order Summary Page Css Start-------------> */

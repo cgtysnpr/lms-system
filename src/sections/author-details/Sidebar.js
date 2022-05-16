@@ -20,10 +20,15 @@ const Sidebar = ({ data, isEnrolled, slug }) => {
               <h3 className="fw_500">{data.title}</h3>
               {isEnrolled ? (
                 <>
-                  <div className="percentage my-3" />
+                  <div className="percentage my-3">
+                    <div
+                      className="percant"
+                      style={{ width: `${data.courseCompletePercentage}%` }}
+                    />
+                  </div>
 
                   <h5 className="sky_blue fw_500 border-bottom pb-4">
-                    {data.courseCompletePercentage} % Complete
+                    {parseInt(data.courseCompletePercentage)} % Complete
                   </h5>
                 </>
               ) : null}

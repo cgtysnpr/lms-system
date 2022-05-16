@@ -7,6 +7,9 @@ class CurriculumService {
   lecture(courseId) {
     return BaseService.getData(`api/CurriculumLecture/section/${courseId}`);
   }
+  lectureStart(id) {
+    return BaseService.getData(`api/CurriculumLecture/${id}`);
+  }
 }
 
 export default new CurriculumService();

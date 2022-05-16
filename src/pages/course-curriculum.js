@@ -5,32 +5,37 @@ import useAuth from "../hooks/useAuth";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import courseService from "../services/course-service";
+import curriculumService from "../services/curriculum-service";
 const CourseCurriculum = () => {
   const [courseData, setCourseData] = useState([]);
   const [isEnrolled, setIsEnrolled] = useState(false);
+  const [started, setStarted] = useState(0);
   const { user } = useAuth();
   let { id } = useParams();
   useEffect(async () => {
-    if (courseData.length === 0) {
-      const response = await courseService.courseDetails(id);
-      if (response) {
-        setCourseData(response.result);
-        if (typeof user !== "undefined" && user) {
-          const responsePurcased = await courseService.purcasedCourse(
-            user.userId
-          );
-          const check = responsePurcased.result.filter((data) => {
-            if (data.courseId === response.result.id) {
-              return data;
-            }
-          });
-          if (check.length > 0) {
-            setIsEnrolled(true);
+    console.log("test");
+    const response = await courseService.courseDetails(id);
+    if (response) {
+      setCourseData(response.result);
+      if (typeof user !== "undefined" && user) {
+        const responsePurcased = await courseService.purcasedCourse(
+          user.userId
+        );
+        const check = responsePurcased.result.filter((data) => {
+          if (data.courseId === response.result.id) {
+            return data;
           }
+        });
+        if (check.length > 0) {
+          setIsEnrolled(true);
         }
       }
     }
-  }, [id, user]);
+  }, [id, user, started]);
+  const lectureStarted = async (id) => {
+    const response = await curriculumService.lectureStart(id);
+    setStarted(started + 1);
+  };
   return (
     <div>
       <Banner />
@@ -43,6 +48,7 @@ const CourseCurriculum = () => {
               slug={id}
               id={courseData.id}
               isEnrolled={isEnrolled}
+              lectureStarted={lectureStarted}
             />
           </>
         ) : null}

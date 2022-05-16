@@ -1,7 +1,8 @@
+import { Link } from "react-router-dom";
 const Card = ({ data }) => {
   return (
     <div className="col-md-6 col-lg-4 d-flex plr-25">
-      <a href={`/course-details/${data.slug}`} className="courses_item">
+      <Link to={`/course-details/${data.slug}`} className="courses_item">
         <div className="courses_img">
           <img
             src={process.env.REACT_APP_API_ENDPOINT + data.coverImage}
@@ -35,7 +36,7 @@ const Card = ({ data }) => {
             </div>
           </div>
         </div>
-      </a>
+      </Link>
     </div>
   );
 };

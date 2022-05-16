@@ -1,7 +1,8 @@
+import React from "react";
 import Banner from "../sections/contact/Banner";
 import Sidebar from "../sections/contact/Sidebar";
 import Form from "../sections/contact/Form";
-const Contact = () => {
+function Contact() {
   return (
     <div>
       <Banner />
@@ -11,5 +12,5 @@ const Contact = () => {
       </div>
     </div>
   );
-};
+}
 export default Contact;

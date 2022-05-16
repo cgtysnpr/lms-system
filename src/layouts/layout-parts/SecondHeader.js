@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 const SecondHeader = () => {
   return (
     <>
@@ -10,7 +11,9 @@ const SecondHeader = () => {
         <link href="css/fonts/font.css" type="text/css" rel="stylesheet" />
         {/* ------Login Section Start Here ------ */}
         <div className="text-center py-3">
-          <img src="./images/logo-black.png" width="220px" alt="" />
+          <Link to={"/"}>
+            <img src="./images/logo-black.png" width="220px" alt="" />
+          </Link>
         </div>
       </div>
     </>

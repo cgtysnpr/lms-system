@@ -1,8 +1,8 @@
 import useAuth from "../hooks/useAuth";
 import { toast } from "react-toastify";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import Page from "react-page-loading";
-export default function UserLogin() {
+function UserLogin() {
   const navigate = useNavigate();
   const { login, user } = useAuth();
   const handleLogin = async (event) => {
@@ -58,9 +58,11 @@ export default function UserLogin() {
                   />
                 </div>
                 <div>
-                  <p className=" text-right sky_blue f_w_500">
-                    Forgot Password ?
-                  </p>
+                  <Link to="/forgat-password-first">
+                    <p className=" text-right sky_blue f_w_500">
+                      Forgot Password ?
+                    </p>
+                  </Link>
                 </div>
                 <div className="text-center">
                   <button type="submit" href="#" className="btn btn-blue my-4">
@@ -84,3 +86,4 @@ export default function UserLogin() {
     </>
   );
 }
+export default UserLogin;

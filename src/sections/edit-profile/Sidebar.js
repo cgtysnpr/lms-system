@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 const Sidebar = () => {
   return (
     <div className="col-md-4 order-md-first mt-4">
@@ -17,9 +18,9 @@ const Sidebar = () => {
           </li>
           <li>
             <img src="./images/contact-2.png" width="30px" alt="" />
-            <a href className="font-weight-bold ">
+            <Link to={"/contact"} className="font-weight-bold ">
               Contact
-            </a>
+            </Link>
           </li>
           <li>
             <img src="./images/log-out.png" width="30px" alt="" />

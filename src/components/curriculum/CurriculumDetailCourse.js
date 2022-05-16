@@ -1,4 +1,4 @@
-const CurriculumDetailCourse = ({ data, isEnrolled, slug }) => {
+const CurriculumDetailCourse = ({ data, isEnrolled, slug, lectureStarted }) => {
   return (
     <li>
       <p>{data.title}</p>
@@ -10,6 +10,7 @@ const CurriculumDetailCourse = ({ data, isEnrolled, slug }) => {
             : `/order-summary/${slug}`
         }
         target="_blank"
+        onClick={() => lectureStarted(data.id)}
         className="btn btn-blue btn-blue-small"
       >
         Start

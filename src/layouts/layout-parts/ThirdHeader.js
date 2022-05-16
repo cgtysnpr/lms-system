@@ -1,4 +1,5 @@
 import useAuth from "../../hooks/useAuth";
+import { Link } from "react-router-dom";
 const ThirdHeader = ({ user }) => {
   const { logout } = useAuth();
   return (
@@ -12,9 +13,9 @@ const ThirdHeader = ({ user }) => {
           <div className="container">
             <div className="header_block d-new-a">
               <div className="logo">
-                <a href="/">
+                <Link to="/">
                   <img src="/images/logo.png" alt="" />
-                </a>
+                </Link>
               </div>
               <div className="userMenu">
                 <div className="user_info">
@@ -25,7 +26,8 @@ const ThirdHeader = ({ user }) => {
                     <img
                       src={
                         user.profilePicture
-                          ? process.env.REACT_APP_API_ENDPOINT
+                          ? process.env.REACT_APP_API_ENDPOINT +
+                            user.profilePicture
                           : "/images/preson.jpg"
                       }
                       alt=""
@@ -35,13 +37,13 @@ const ThirdHeader = ({ user }) => {
                 <div className="userDropDown">
                   <ul>
                     <li>
-                      <a href="#">Edit profile</a>
+                      <Link to="/edit-profile">Edit profile</Link>
                     </li>
                     <li>
                       <a href="/dashboard">Manage Supscription</a>
                     </li>
                     <li>
-                      <a href="#">Contact</a>
+                      <Link to="/contact">Contact</Link>
                     </li>
                     <li>
                       <a href="#" onClick={() => logout()}>

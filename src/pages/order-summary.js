@@ -18,7 +18,7 @@ const OrderSummary = () => {
   const { user } = useAuth();
   useEffect(async () => {
     if (typeof user !== "undefined" && !user) {
-      window.location.replace("/login");
+      navigate("/login");
     }
     const response = await courseService.courseDetails(id);
     if (response) {
@@ -33,14 +33,16 @@ const OrderSummary = () => {
           }
         });
         if (check.length > 0) {
-          window.location.replace("/dashboard");
+          navigate("/dashboard");
         } else {
           setPageReady(true);
         }
       }
     }
   }, [id]);
+
   const Pay = async () => {
+    return;
     if (courseData) {
       var data = {
         courseId: courseData.id,
@@ -48,7 +50,7 @@ const OrderSummary = () => {
       };
       const response = await paymentService.finishPay(data);
       if (response) {
-        window.location.replace("/dashboard");
+        navigate("/dashboard");
         toast.success("Enrolled Successfully");
       }
     }
@@ -76,11 +78,6 @@ const OrderSummary = () => {
 
                 <StudentLoginDetail />
                 <PaymentInformation />
-                <BillingAdress />
-
-                <button onClick={Pay} className="btn btn-blue my-4">
-                  Buy Now
-                </button>
               </div>
             </div>
           </div>
