@@ -1,9 +1,11 @@
 import Banner from "../sections/edit-profile/Banner";
 import EditProfileDetail from "../sections/edit-profile/EditProfileDetail";
-import Sidebar from "../sections/edit-profile/Sidebar";
+import Sidebar from "../sections/sidebars/profile/Sidebar";
 import useAuth from "../hooks/useAuth";
+import { useLocation } from "react-router-dom";
 const EditProfile = () => {
   const { user } = useAuth();
+  let { pathname } = useLocation();
   return (
     <div>
       <Banner />
@@ -11,7 +13,7 @@ const EditProfile = () => {
         {user ? (
           <>
             <EditProfileDetail user={user} />
-            <Sidebar />
+            <Sidebar slug={pathname} />
           </>
         ) : null}
       </div>

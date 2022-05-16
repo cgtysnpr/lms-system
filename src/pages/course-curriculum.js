@@ -1,5 +1,5 @@
 import Banner from "../sections/course-curriculum/Banner";
-import Sidebar from "../sections/author-details/Sidebar";
+import Sidebar from "../sections/sidebars/author-details-sidebar/Sidebar";
 import CurriculumDetails from "../sections/course-curriculum/CurriculumDetails";
 import useAuth from "../hooks/useAuth";
 import { useState, useEffect } from "react";

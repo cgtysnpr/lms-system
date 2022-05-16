@@ -68,13 +68,19 @@ const EditProfileDetail = ({ user }) => {
                     <img src={preview} alt="" />
                   )}
                 </div>
-                <input
-                  type="file"
-                  id="avatar"
-                  name="ProfilePicture"
-                  onChange={changedPhoto}
-                  accept="image/png, image/jpeg"
-                ></input>
+                <div className="pl-4 pb-4">
+                  <label for="avatar" className="custom-file-upload">
+                    Change Photo
+                    <input
+                      type="file"
+                      id="avatar"
+                      name="ProfilePicture"
+                      onChange={changedPhoto}
+                      size="60"
+                      accept="image/png, image/jpeg"
+                    />
+                  </label>
+                </div>
               </div>
               <div className="form-group pb-3">
                 <label className="f_w_500">First Name</label>

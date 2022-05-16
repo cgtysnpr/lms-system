@@ -1,6 +1,6 @@
 import Banner from "../sections/author-details/Banner";
 import Instructor from "../sections/author-details/Instructor";
-import Sidebar from "../sections/author-details/Sidebar";
+import Sidebar from "../sections/sidebars/author-details-sidebar/Sidebar";
 import useAuth from "../hooks/useAuth";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";

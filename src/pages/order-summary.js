@@ -5,9 +5,7 @@ import PaymentInformation from "../sections/order-summary/PaymentInformation";
 import BillingAdress from "../sections/order-summary/BillingAdress";
 import { useParams, useNavigate } from "react-router-dom";
 import courseService from "../services/course-service";
-import paymentService from "../services/payment-service";
 import { useState, useEffect } from "react";
-import { toast } from "react-toastify";
 import useAuth from "../hooks/useAuth";
 import Page from "react-page-loading";
 const OrderSummary = () => {
@@ -40,21 +38,6 @@ const OrderSummary = () => {
       }
     }
   }, [id]);
-
-  const Pay = async () => {
-    return;
-    if (courseData) {
-      var data = {
-        courseId: courseData.id,
-        isSuccess: true,
-      };
-      const response = await paymentService.finishPay(data);
-      if (response) {
-        navigate("/dashboard");
-        toast.success("Enrolled Successfully");
-      }
-    }
-  };
   if (!pageReady) {
     return (
       <div>
@@ -75,9 +58,11 @@ const OrderSummary = () => {
                 {courseData.length !== 0 ? (
                   <OrderSummaryDetail data={courseData} />
                 ) : null}
-
+                {/*
                 <StudentLoginDetail />
-                <PaymentInformation />
+                <BillingAdress />
+                 */}
+                <PaymentInformation data={courseData} />
               </div>
             </div>
           </div>
