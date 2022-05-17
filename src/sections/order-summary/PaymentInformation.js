@@ -107,6 +107,15 @@ const PaymentInformation = ({ data }) => {
             </div>
           </div>
         ) : null}
+        {Number(price) === 0 ? (
+          <div className="col-xl-12">
+            <div className="form-group">
+              <button onClick={() => finishPayment()} class="btn btn-blue my-4">
+                Enroll
+              </button>
+            </div>
+          </div>
+        ) : null}
       </div>
     </div>
   );

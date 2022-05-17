@@ -7,13 +7,13 @@ const Form = () => {
     const formData = Object.fromEntries(form.entries());
     const response = await userService.contact(formData);
     if (response) {
+      document.getElementById("contact").reset();
       toast.success("Submited!");
     }
-    console.log(response);
   };
   return (
     <div className="col-md-8 pt-5 order-md-last background_color_grey">
-      <form onSubmit={contactSend}>
+      <form id="contact" onSubmit={contactSend}>
         <div className="row">
           <div className="col-xl-7 ">
             <div className="pl-xl-3">
