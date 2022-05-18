@@ -19,11 +19,11 @@ const PaymentInformation = ({ data }) => {
     setOptions(initialOptions);
   }, []);
   const finishPayment = async () => {
-    var data = {
+    var enrollData = {
       courseId: data.id,
       isSuccess: true,
     };
-    const response = await paymentService.finishPay(data);
+    const response = await paymentService.finishPay(enrollData);
     if (response) {
       navigate("/dashboard");
     }
