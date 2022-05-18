@@ -1,4 +1,4 @@
-import { useLocation } from "react-router-dom";
+import { useLocation, Link } from "react-router-dom";
 const Sidebar = ({ data, isEnrolled, slug }) => {
   const location = useLocation();
   return (
@@ -46,12 +46,8 @@ const Sidebar = ({ data, isEnrolled, slug }) => {
                   width="10%"
                   alt=""
                 />
-                <a
-                  href={
-                    location.pathname.includes("/course-curriculum")
-                      ? null
-                      : `/course-curriculum/${slug}`
-                  }
+                <Link
+                  to={`/course-curriculum/${slug}`}
                   className={
                     location.pathname.includes("/course-curriculum")
                       ? "font-weight-bold sky_blue"
@@ -59,7 +55,7 @@ const Sidebar = ({ data, isEnrolled, slug }) => {
                   }
                 >
                   Course Curriculum
-                </a>
+                </Link>
               </li>
               <li>
                 <img
@@ -71,12 +67,8 @@ const Sidebar = ({ data, isEnrolled, slug }) => {
                   width="10%"
                   alt=""
                 />
-                <a
-                  href={
-                    location.pathname.includes("/author-details")
-                      ? null
-                      : `/author-details/${slug}`
-                  }
+                <Link
+                  to={`/author-details/${slug}`}
                   className={
                     location.pathname.includes("/author-details")
                       ? "font-weight-bold sky_blue"
@@ -84,7 +76,7 @@ const Sidebar = ({ data, isEnrolled, slug }) => {
                   }
                 >
                   Your Instructor
-                </a>
+                </Link>
               </li>
             </ul>
           </div>

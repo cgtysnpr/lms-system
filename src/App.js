@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Route, Link, Routes } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Home from "./pages/home";
 import Login from "./pages/login";
 import OrderSummary from "./pages/order-summary";
@@ -15,7 +15,6 @@ import AuthorDetails from "./pages/author-details";
 import MainLayout from "./layouts/MainLayout";
 import SecondLayout from "./layouts/SecondLayout";
 import { ToastContainer } from "react-toastify";
-import { Helmet } from "react-helmet";
 import "react-toastify/dist/ReactToastify.css";
 import { AuthProvider } from "./contexts/JWTContext";
 import "./styles/css/bootstrap.css";
@@ -32,44 +31,44 @@ export default function App() {
               <Route exact index path="/" element={<Home />} />
               <Route
                 exact
-                path="course-details/:id"
+                path="/course-details/:id"
                 element={<CourseDetails />}
               />
               <Route
                 exact
-                path="order-summary/:id"
+                path="/order-summary/:id"
                 element={<OrderSummary />}
               />
-              <Route exact path="edit-profile" element={<EditProfile />} />
-              <Route exact path="dashboard" element={<Dashboard />} />
+              <Route exact path="/edit-profile" element={<EditProfile />} />
+              <Route exact path="/dashboard" element={<Dashboard />} />
               <Route
                 exact
-                path="course-curriculum/:id"
+                path="/course-curriculum/:id"
                 element={<CourseCurriculum />}
               />
-              <Route exact path="contact" element={<Contact />} />
+              <Route exact path="/contact" element={<Contact />} />
               <Route
                 exact
-                path="author-details/:id"
+                path="/author-details/:id"
                 element={<AuthorDetails />}
               />
             </Route>
             <Route exact path="/" element={<SecondLayout />}>
-              <Route exact path="login" element={<Login />} />
-              <Route exact path="signup" element={<SignUp />} />
+              <Route exact path="/login" element={<Login />} />
+              <Route exact path="/signup" element={<SignUp />} />
               <Route
                 exact
-                path="forgat-password-first"
+                path="/forgat-password-first"
                 element={<ForgatPasswordFirst />}
               />
               <Route
                 exact
-                path="forgat-password-second"
+                path="/forgat-password-second"
                 element={<ForgatPasswordSecond />}
               />
               <Route
                 exact
-                path="forgat-password-third"
+                path="/forgat-password-third"
                 element={<ForgatPasswordThird />}
               />
             </Route>

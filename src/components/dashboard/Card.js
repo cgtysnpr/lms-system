@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 const Card = ({ data }) => {
+  console.log(data);
   return (
     <div className="col-md-6 col-lg-4 plr-25 d-flex">
       <a href={`/course-details/${data.course.slug}`} className="dasboard_item">
@@ -22,7 +23,7 @@ const Card = ({ data }) => {
             </h6>
           </div>
           <div className="courses_author">
-            <Link to={`/author-details/${data.slug}`}>
+            <Link to={`/author-details/${data.course.slug}`}>
               <div className="courses_author_info">
                 <div className="courses_author_img">
                   <img
