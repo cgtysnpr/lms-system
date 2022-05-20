@@ -36,7 +36,12 @@ const CourseDescription = ({ data, isEnrolled }) => {
               </div>
               <p>{data.description}</p>
               <h5 className="price">
-                $ {data.coursePricePlan ? data.coursePricePlan.price : ""}
+                ${" "}
+                {data.coursePricePlan
+                  ? data.coursePricePlan.price === 0
+                    ? "Free"
+                    : data.coursePricePlan.price
+                  : ""}
               </h5>
               <div className="enroll_btn">
                 <a

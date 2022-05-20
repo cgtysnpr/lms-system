@@ -20,17 +20,17 @@ const Footer = () => {
           <div className="footer_block d-new-a">
             <div className="footer_left">
               <p>
-                Copyright© 2021, All rights Reserved.Created by{" "}
-                <a href="#">Dignitech</a>
+                {" "}
+                <a href="#"></a>
               </p>
             </div>
             <div className="footer_link">
               <ul>
                 <li>
-                  <a href="#">Terms of Use</a>
+                  <a href="#"></a>
                 </li>
                 <li>
-                  <a href="#">Privacy Policy</a>
+                  <a href="#"></a>
                 </li>
               </ul>
             </div>

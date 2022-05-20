@@ -4,14 +4,12 @@ import curriculumService from "../../services/curriculum-service";
 const CurriculumDetails = ({ id, isEnrolled, slug, lectureStarted }) => {
   const [sectionData, setSectionData] = useState([]);
   const [lectureData, setLectureData] = useState([]);
+  const [length, setLength] = useState(0);
   useEffect(async () => {
     const response = await curriculumService.section(id);
     if (response.result) {
       setSectionData(response.result);
-
-      response.result.map((data) => {
-        lectureFunction(data.id);
-      });
+      setLength(response.result.length);
     }
   }, []);
   const lectureFunction = async (id) => {
@@ -20,6 +18,12 @@ const CurriculumDetails = ({ id, isEnrolled, slug, lectureStarted }) => {
       setLectureData([...lectureData, dataResponse.result]);
     }
   };
+  useEffect(async () => {
+    if (length > 0) {
+      await lectureFunction(sectionData[length - 1].id);
+      setLength(length - 1);
+    }
+  }, [length]);
   return (
     <div className="col-xl-8  px-xl-2 px-md-5 pt-4 background_color_grey">
       <div className="row pt-xl-5 ">

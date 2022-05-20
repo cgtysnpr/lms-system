@@ -2247,6 +2247,18 @@ h5.price{
     padding: 6px 12px;
     cursor: pointer;
 }
+.description-lines{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+}
+.empty-div{
+    width:100vw;
+    height:100vh;
+    background-color:#ffffff00;
+}
 /* <------------Order Summary Page Css End-------------> */
 
 

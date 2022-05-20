@@ -23,7 +23,6 @@ const handlers = {
   },
   LOGIN: (state, action) => {
     const { user } = action.payload;
-    console.log(action.payload);
     return {
       ...state,
       isAuthenticated: true,

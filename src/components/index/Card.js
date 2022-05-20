@@ -12,7 +12,7 @@ const Card = ({ data }) => {
         <div className="courses_info">
           <div className="courses_info_top">
             <h3>{data.title}</h3>
-            <p>{data.description}</p>
+            <p className="description-lines">{data.description}</p>
           </div>
 
           <div className="courses_author">
@@ -35,7 +35,13 @@ const Card = ({ data }) => {
               </div>
             </Link>
             <div className="courses_price">
-              <h5>{"$ " + data.coursePricePlan.price}</h5>
+              <h5>
+                {data.coursePricePlan.price === 0 ? (
+                  "Free"
+                ) : (
+                  <>{"$ " + data.coursePricePlan.price}</>
+                )}
+              </h5>
             </div>
           </div>
         </div>

@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 const Card = ({ data }) => {
-  console.log(data);
   return (
     <div className="col-md-6 col-lg-4 plr-25 d-flex">
       <a href={`/course-details/${data.course.slug}`} className="dasboard_item">

@@ -13,7 +13,6 @@ const CourseCurriculum = () => {
   const { user } = useAuth();
   let { id } = useParams();
   useEffect(async () => {
-    console.log("test");
     const response = await courseService.courseDetails(id);
     if (response) {
       setCourseData(response.result);

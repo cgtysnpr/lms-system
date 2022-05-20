@@ -21,7 +21,7 @@ const EditProfileDetail = ({ user }) => {
     const form = new FormData(event.target);
     axios
       .put(
-        `http://66.175.233.49:9002/api/User/student/${user.userId}/profile`,
+        `${process.env.REACT_APP_API_ENDPOINT}/api/User/student/${user.userId}/profile`,
         form,
         {
           headers: {
@@ -32,6 +32,7 @@ const EditProfileDetail = ({ user }) => {
         }
       )
       .then(function (response) {
+        window.location.reload("/edit-profile");
         toast.success("Profile Updated Successfully!");
       })
       .catch(function (error) {});

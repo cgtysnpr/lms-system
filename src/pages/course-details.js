@@ -8,10 +8,11 @@ import { useParams } from "react-router-dom";
 import courseService from "../services/course-service";
 import { useState, useEffect } from "react";
 import useAuth from "../hooks/useAuth";
-
+import curriculumService from "../services/curriculum-service";
 const CourseDetails = () => {
   const [courseData, setCourseData] = useState([]);
   const [isEnrolled, setIsEnrolled] = useState(false);
+  const [started, setStarted] = useState(0);
   const { user } = useAuth();
   let { id } = useParams();
   useEffect(async () => {
@@ -35,6 +36,10 @@ const CourseDetails = () => {
       }
     }
   }, [id, user]);
+  const lectureStarted = async (id) => {
+    const response = await curriculumService.lectureStart(id);
+    setStarted(started + 1);
+  };
   return (
     <div>
       {courseData.length !== 0 ? (
@@ -42,11 +47,23 @@ const CourseDetails = () => {
           <Banner image={courseData.coverImage} />
           <CourseDescription data={courseData} isEnrolled={isEnrolled} />
           <YourInstructor slug={id} data={courseData.author} />
-          <Curriculum slug={id} id={courseData.id} isEnrolled={isEnrolled} />
+          <Curriculum
+            setStarted={setStarted}
+            started={started}
+            slug={id}
+            id={courseData.id}
+            isEnrolled={isEnrolled}
+            lectureStarted={lectureStarted}
+          />
           <Faq />
           <GetStarted data={courseData} isEnrolled={isEnrolled} />
         </>
-      ) : null}
+      ) : (
+        <>
+          <Banner />
+          <div className="empty-div" />
+        </>
+      )}
     </div>
   );
 };
