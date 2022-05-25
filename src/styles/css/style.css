@@ -2254,6 +2254,13 @@ h5.price{
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
 }
+.description-lines-4{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+}
 .empty-div{
     width:100vw;
     height:100vh;

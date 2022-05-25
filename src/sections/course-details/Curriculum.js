@@ -17,6 +17,7 @@ const Curriculum = ({ id, isEnrolled, slug, lectureStarted }) => {
     const dataResponse = await curriculumService.lecture(id);
     if (dataResponse.result) {
       setLectureData([...lectureData, dataResponse.result]);
+      console.log(dataResponse.result);
     }
   };
   useEffect(async () => {
@@ -43,15 +44,17 @@ const Curriculum = ({ id, isEnrolled, slug, lectureStarted }) => {
                     >
                       {data.title}
                     </h4>
-                    {lectureData[i]?.map((lecture, j) => (
-                      <CourseCurriculum
-                        key={`lecture${j}`}
-                        lectureStarted={lectureStarted}
-                        isEnrolled={isEnrolled}
-                        data={lecture}
-                        slug={slug}
-                      />
-                    ))}
+                    {lectureData[lectureData.length - 1 - i]?.map(
+                      (lecture, j) => (
+                        <CourseCurriculum
+                          key={`lecture${j}`}
+                          lectureStarted={lectureStarted}
+                          isEnrolled={isEnrolled}
+                          data={lecture}
+                          slug={slug}
+                        />
+                      )
+                    )}
                   </>
                 ))}
               </ul>

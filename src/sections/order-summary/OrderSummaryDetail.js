@@ -16,7 +16,7 @@ const OrderSummaryDetail = ({ data }) => {
         </div>
         <div className="col-md-7 ">
           <h3 className="font-weight-bold">{data.title}</h3>
-          <p className="py-2">{data.description}</p>
+          <p className="py-2 description-lines-4">{data.description}</p>
         </div>
         <p className="font-weight-bold ml-auto mr-3 pb-3 mt-md-n5">
           Billed Today (USD){" "}

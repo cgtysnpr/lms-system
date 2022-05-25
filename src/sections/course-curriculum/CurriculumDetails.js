@@ -1,7 +1,13 @@
 import CurriculumDetailCourse from "../../components/curriculum/CurriculumDetailCourse";
 import { useEffect, useState } from "react";
 import curriculumService from "../../services/curriculum-service";
-const CurriculumDetails = ({ id, isEnrolled, slug, lectureStarted }) => {
+const CurriculumDetails = ({
+  id,
+  isEnrolled,
+  slug,
+  lectureStarted,
+  isFree,
+}) => {
   const [sectionData, setSectionData] = useState([]);
   const [lectureData, setLectureData] = useState([]);
   const [length, setLength] = useState(0);
@@ -41,15 +47,18 @@ const CurriculumDetails = ({ id, isEnrolled, slug, lectureStarted }) => {
                   >
                     {data.title}
                   </h4>
-                  {lectureData[i]?.map((lecture, j) => (
-                    <CurriculumDetailCourse
-                      key={`lecture${j}`}
-                      lectureStarted={lectureStarted}
-                      isEnrolled={isEnrolled}
-                      data={lecture}
-                      slug={slug}
-                    />
-                  ))}
+                  {lectureData[lectureData.length - 1 - i]?.map(
+                    (lecture, j) => (
+                      <CurriculumDetailCourse
+                        key={`lecture${j}`}
+                        lectureStarted={lectureStarted}
+                        isEnrolled={isEnrolled}
+                        isFree={isFree}
+                        data={lecture}
+                        slug={slug}
+                      />
+                    )
+                  )}
                 </>
               ))}
             </ul>

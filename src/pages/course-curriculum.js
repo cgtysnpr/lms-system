@@ -9,6 +9,7 @@ import curriculumService from "../services/curriculum-service";
 const CourseCurriculum = () => {
   const [courseData, setCourseData] = useState([]);
   const [isEnrolled, setIsEnrolled] = useState(false);
+  const [isFree, setIsFree] = useState(false);
   const [started, setStarted] = useState(0);
   const { user } = useAuth();
   let { id } = useParams();
@@ -16,6 +17,9 @@ const CourseCurriculum = () => {
     const response = await courseService.courseDetails(id);
     if (response) {
       setCourseData(response.result);
+      if (Number(response.result.coursePricePlan.price) === 0) {
+        setIsFree(true);
+      }
       if (typeof user !== "undefined" && user) {
         const responsePurcased = await courseService.purcasedCourse(
           user.userId
@@ -48,6 +52,7 @@ const CourseCurriculum = () => {
               id={courseData.id}
               isEnrolled={isEnrolled}
               lectureStarted={lectureStarted}
+              isFree={isFree}
             />
           </>
         ) : null}
